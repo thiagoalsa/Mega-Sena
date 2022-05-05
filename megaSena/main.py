@@ -5,9 +5,9 @@ from time import sleep
 
 
 while True:
-    quantidade_de_numeros = int(input('Quantas DEZENAS deseja apostar [minimo: 6 , maximo: 15]?  '))
-    if 5 < quantidade_de_numeros < 16:
-        quantidade_de_numeros = str(quantidade_de_numeros)
+    QUANTIDADE_DE_NUMEROS = int(input('Quantas DEZENAS deseja apostar [minimo: 6 , maximo: 15]?  '))
+    if 5 < QUANTIDADE_DE_NUMEROS < 16:
+        QUANTIDADE_DE_NUMEROS = str(QUANTIDADE_DE_NUMEROS)
         break
     else:
         print('Erro Digite entre 6 e 15:')
@@ -79,3 +79,4 @@ print('-' * 50)
 print(f'Voce ganhou {quadra} vezes na QUADRA.')
 print('-' * 50)
 print(f'O custo total das apostas foi de R${contador * valor_aposta}')
+
