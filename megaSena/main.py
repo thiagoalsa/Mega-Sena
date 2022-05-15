@@ -1,13 +1,14 @@
 import random
 from time import sleep
+from util import util
 
 # QUANTOS NUMEROS A PESSOA DESEJA JOGAR
 
 
 while True:
-    QUANTIDADE_DE_NUMEROS = int(input('Quantas DEZENAS deseja apostar [minimo: 6 , maximo: 15]?  '))
-    if 5 < QUANTIDADE_DE_NUMEROS < 16:
-        QUANTIDADE_DE_NUMEROS = str(QUANTIDADE_DE_NUMEROS)
+    quantidade_de_numeros = int(input('Quantas DEZENAS deseja apostar [minimo: 6 , maximo: 15]?  '))
+    if 5 < quantidade_de_numeros < 16:
+        quantidade_de_numeros = str(quantidade_de_numeros)
         break
     else:
         print('Erro Digite entre 6 e 15:')
@@ -27,12 +28,15 @@ print('-' * 40)
 sleep(0.5)
 
 # Coletando os numeros do jogador
+
 numeros_escolhidos = []
 while len(numeros_escolhidos) != int(quantidade_de_numeros):
     escolha = int(input('Escolha um numero entre 1 e 60: '))
     if escolha in numeros_escolhidos:
         print('Erro voce ja escolheu esse numero.')
-    elif 1 > escolha > 60:
+    elif escolha > 60:
+        print('Erro! Escolha apenas entre 1 e 60')
+    elif escolha < 1:
         print('Erro! Escolha apenas entre 1 e 60')
     else:
         numeros_escolhidos.append(escolha)
@@ -40,7 +44,8 @@ while len(numeros_escolhidos) != int(quantidade_de_numeros):
         print(f'Voce já escolheu {len(numeros_escolhidos)} de {quantidade_de_numeros}.')
         print('-' * 40)
 
-# Sorteando os numeros e conferindo resultados.
+# SORTEANDO OS NUMEROS
+
 print(f' Seus numeros escolhidos foram {sorted(numeros_escolhidos)}')
 numeros_escolhidos = sorted(numeros_escolhidos)
 sleep(3)
@@ -48,31 +53,34 @@ contador = 0
 sena = 0
 quina = 0
 quadra = 0
-while True:
-    x = random.sample(range(1, 61), 6)
-    x = sorted(x)
-    contador += 1
-    print(f'{contador}º - {x}')
-    lista = []
 
-    for c in x:
-        if c in numeros_escolhidos:
-            lista.append(c)
-    if len(lista) == 6:
+# CONFERINDO OS NUMEROS
+
+while True:
+    sorteio = util.raffle(6, 60)
+    contador += 1
+    print(f'{contador}º - {sorteio}')
+
+    match = util.match_number(sorteio, numeros_escolhidos)
+
+    if match == 6:
         print(f"Voce venceu na Sena com {contador} tentativas.")
+        sena += 1
         break
-    elif len(lista) == 5:
+    elif match == 5:
         quina += 1
 
-    elif len(lista) == 4:
+    elif match == 4:
         quadra += 1
 
-
-    elif contador == 10000:
-        print(f'Voce nao ganhou nenhuma vez, em {contador} tentativas.')
+    elif contador == 1000000:
         break
-    lista.clear()
+
+
+
 print(f'        ACABOU!      ')
+print('-' * 50)
+print(f'Voce ganhou {sena} vez na SENA')
 print('-' * 50)
 print(f'Voce ganhou {quina} vezes na QUINA.')
 print('-' * 50)

@@ -6,4 +6,9 @@ def raffle(number_of_numbers, game_size):
     return sorted(numbers_drawn)
 
 
-
+def match_number(a, b):
+    lt = []
+    for c in a:
+        if c in b:
+            lt.append(c)
+    return len(lt)
