@@ -11,4 +11,10 @@ def match_number(a, b):
     for c in a:
         if c in b:
             lt.append(c)
-    return len(lt)
+    return lt
+
+
+def total_match_number(lista):
+    return len(lista)
+
+

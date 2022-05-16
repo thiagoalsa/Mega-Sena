@@ -63,14 +63,14 @@ while True:
 
     match = util.match_number(sorteio, numeros_escolhidos)
 
-    if match == 6:
+    if util.total_match_number(match) == 6:
         print(f"Voce venceu na Sena com {contador} tentativas.")
         sena += 1
         break
-    elif match == 5:
+    elif util.total_match_number(match) == 5:
         quina += 1
 
-    elif match == 4:
+    elif util.total_match_number(match) == 4:
         quadra += 1
 
     elif contador == 1000000:
