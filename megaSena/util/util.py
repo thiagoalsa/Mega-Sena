@@ -18,3 +18,5 @@ def total_match_number(lista):
     return len(lista)
 
 
+def cambio(price: int, cambio='£'):
+    return f'{cambio}{price:_.2f}'.replace('.', ',').replace('_', '.')
