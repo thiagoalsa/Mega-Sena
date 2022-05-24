@@ -20,7 +20,7 @@ lista_valores = {'6': 4.5, '7': 31.5, '8': 126, '9': 378, '10': 945, '11': 2079,
                  '14': 13513.5, '15': 22522.5}
 valor_aposta = lista_valores[f'{quantidade_de_numeros}']
 print('-' * 40)
-print(f'O valor de cada aposta sera de R${valor_aposta}')
+print(f'O valor de cada aposta sera de', util.cambio(valor_aposta, 'R$'))
 sleep(3)
 print('-' * 40)
 print(f'Agora esta na hora de escolher os seus {quantidade_de_numeros} numeros. ')
@@ -77,7 +77,6 @@ while True:
         break
 
 
-
 print(f'        ACABOU!      ')
 print('-' * 50)
 print(f'Voce ganhou {sena} vez na SENA')
@@ -86,5 +85,10 @@ print(f'Voce ganhou {quina} vezes na QUINA.')
 print('-' * 50)
 print(f'Voce ganhou {quadra} vezes na QUADRA.')
 print('-' * 50)
-print(f'O custo total das apostas foi de R${contador * valor_aposta}')
+print(f'O custo total das apostas foi de', util.cambio(contador * valor_aposta,'R$'))
+print('-' * 50)
+print(f'No total foram {contador} tentativas para ganhar na SENA.'
+      f'Como são realizados 106 sorteios por ano, você demorou...')
+sleep(3)
+print(f'{contador / 106:.0f} anos.')
 
